@@ -1,0 +1,44 @@
+server:
+  port: 5656
+
+spring:
+  application:
+    name: demo
+  datasource:
+    driver-class-name: org.h2.Driver
+    username: 'sa'
+    password:
+    url: 'jdbc:h2:mem:demo'
+  h2:
+    console:
+      enabled: true
+      path: '/h2'
+  jpa:
+    generate-ddl: false
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+    database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
+
+  messages:
+    basename: messages
+    encoding: UTF-8
+
+feign:
+  client:
+    config:
+      default:
+        loggerLevel: FULL
+        readTimeout: 60000
+        connectTimeout: 60000
+
+coinDesk:
+  api:
+    url: https://kengp3.github.io/blog
+
+logging.level:
+  org.springframework.web.servlet: DEBUG
+  org.hibernate.SQL: DEBUG
+  org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+  org.h2: DEBUG
